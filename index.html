@@ -121,13 +121,6 @@
             gap: 2rem;
             list-style: none;
         }
-        .nav-links.active {
-        display: flex;
-    }
-
-    .nav-links li {
-        margin: 0.5rem 0;
-    }
 
         .nav-links a {
             color: #006464;
@@ -244,9 +237,6 @@
         <div class="logo">
             <img src="template/logo.png" alt="Yeeba Impact Logo">
         </div>
-        <button class="hamburger" aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
-        </button>
         <ul class="nav-links">
             <li><a href="#hero" onclick="scrollToSection('hero')">Home</a></li>
             <li><a href="#who-we-are" onclick="scrollToSection('who-we-are')">Who We Are</a></li>
@@ -370,20 +360,6 @@
                 behavior: 'smooth'
             });
         }
-
-        // Toggle mobile navigation
-document.querySelector('.hamburger').addEventListener('click', function() {
-    const navLinks = document.querySelector('.nav-links');
-    navLinks.classList.toggle('active');
-});
-
-// Close the mobile menu when a link is clicked
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        const navLinks = document.querySelector('.nav-links');
-        navLinks.classList.remove('active');
-    });
-});
 
         // Initialize Google Calendar booking buttons
         window.addEventListener('load', function() {
