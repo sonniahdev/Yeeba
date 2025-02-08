@@ -420,6 +420,7 @@
             width: 100%;
             height: 100vh;
             position: relative;
+            overflow: hidden;
         }
 
         .main-container {
@@ -618,25 +619,18 @@
         }
 
         @media (max-width: 768px) {
-            body {
-                overflow-y: auto;
-            }
-
             .main-container {
                 position: relative;
-                width: 100%;
-                height: auto;
-                display: block;
+                width: 600vw; /* Maintain horizontal width */
+                height: 100vh;
+                display: flex;
+                flex-wrap: nowrap;
                 transform: none !important;
             }
 
-            .scroll-wrapper {
-                height: auto;
-            }
-
             section {
-                width: 100%;
-                height: auto;
+                width: 100vw;
+                height: 100vh;
                 min-height: 100vh;
                 position: relative;
                 padding: 80px 1rem 2rem;
@@ -814,40 +808,37 @@
             });
         });
 
-        // Initialize GSAP animation for desktop
-        // Initialize GSAP animation for desktop
+        // Initialize GSAP animation for horizontal scrolling
         function initScrollAnimation() {
-            if (!isMobile && window.innerWidth > 768) {
-                gsap.registerPlugin(ScrollTrigger);
-                
-                // Clear any existing animations
-                if (gsapAnimation) {
-                    gsapAnimation.kill();
-                }
-                
-                const sections = document.querySelectorAll('section');
-                const totalScrollDistance = (sections.length - 1) * window.innerWidth;
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Clear any existing animations
+            if (gsapAnimation) {
+                gsapAnimation.kill();
+            }
+            
+            const sections = document.querySelectorAll('section');
+            const totalScrollDistance = (sections.length - 1) * window.innerWidth;
 
-                gsapAnimation = gsap.to(".main-container", {
-                    x: () => -totalScrollDistance,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: ".scroll-wrapper",
-                        start: "top top",
-                        end: () => `+=${totalScrollDistance}`,
-                        scrub: 1,
-                        pin: true,
-                        anticipatePin: 1,
-                        invalidateOnRefresh: true,
-                        onUpdate: (self) => {
-                            // Ensure smooth scrolling at the end
-                            if (self.progress >= 0.99) {
-                                window.scrollTo(0, self.end);
-                            }
+            gsapAnimation = gsap.to(".main-container", {
+                x: () => -totalScrollDistance,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".scroll-wrapper",
+                    start: "top top",
+                    end: () => `+=${totalScrollDistance}`,
+                    scrub: 1,
+                    pin: true,
+                    anticipatePin: 1,
+                    invalidateOnRefresh: true,
+                    onUpdate: (self) => {
+                        // Ensure smooth scrolling at the end
+                        if (self.progress >= 0.99) {
+                            window.scrollTo(0, self.end);
                         }
                     }
-                });
-            }
+                }
+            });
         }
 
         // Smooth scrolling function
@@ -855,25 +846,16 @@
             const section = document.getElementById(sectionId);
             if (!section) return;
 
-            if (isMobile) {
-                // Mobile scrolling
-                section.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            } else {
-                // Desktop horizontal scrolling
-                const sections = document.querySelectorAll('section');
-                const sectionIndex = Array.from(sections).findIndex(s => s.id === sectionId);
-                const totalSections = sections.length;
-                const maxScroll = (totalSections - 1) * window.innerWidth;
-                const scrollTo = (sectionIndex / (totalSections - 1)) * maxScroll;
-                
-                window.scrollTo({
-                    top: scrollTo,
-                    behavior: 'smooth'
-                });
-            }
+            const sections = document.querySelectorAll('section');
+            const sectionIndex = Array.from(sections).findIndex(s => s.id === sectionId);
+            const totalSections = sections.length;
+            const maxScroll = (totalSections - 1) * window.innerWidth;
+            const scrollTo = (sectionIndex / (totalSections - 1)) * maxScroll;
+            
+            window.scrollTo({
+                left: scrollTo, // Use left for horizontal scrolling
+                behavior: 'smooth'
+            });
         }
 
         // Initialize calendar booking buttons
