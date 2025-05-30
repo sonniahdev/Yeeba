@@ -4,15 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Yeeba Impact: From Data to Decisions - Craft an Impactful Future.">
-    <title>Yeeba Impact</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title data-en="Yeeba Impact" data-sw="Yeeba Impact">Yeeba Impact</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-    <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
 
     <style>
         * {
@@ -21,633 +16,575 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-            height: 100%;
-        }
-
         body {
-            font-family: 'Roboto', sans-serif;
-            color: #006464;
-            background-color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
             overflow-x: hidden;
-            min-height: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
             position: relative;
-        }
-
-        .scroll-wrapper {
-            width: 100%;
-            height: 100vh;
-            position: relative;
-        }
-
-        .main-container {
-            display: flex;
-            flex-wrap: nowrap;
-            width: 500vw;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-        }
-
-        section {
-            width: 100vw;
-            height: 100vh;
-            padding: 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
-
-        #hero {
+            height: 400px;
             background-image: url('template/website_cover.jpeg');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
         }
 
-        #hero::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+           
         }
 
-        #hero .section-content {
+        .hero-content {
             position: relative;
             z-index: 1;
-            color: white;
         }
 
-        #hero h1 {
-            color: white;
-        }
-
-        .section-content {
-            max-width: 1200px;
-            margin: auto;
-            padding: 1rem;
-            height: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
-
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            height: 70px;
-            transition: all 0.3s ease;
-        }
-
-        .logo img {
-            height: 50px;
-            width: auto;
-            transition: filter 0.3s ease;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #006464;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #00C0F3;
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 0.5rem;
-            z-index: 1001;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background: #006464;
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
-
-        .floating-content {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-            opacity: 0;
-            visibility: hidden;
-            width: 100%;
-            max-width: 1200px;
-            padding: 2rem;
-            background-color: rgba(245, 245, 245, 0.95);
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        #who-we-are { background-color: white; }
-        #what-we-do { background-color: #f5f5f5; }
-        #work-done { background-color: white; }
-        #get-involved { background-color: #f5f5f5; }
-
-        h1 {
+        .hero h1 {
             font-size: 3rem;
-            margin-bottom: 2rem;
-            color: #006464;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        h2 {
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Us Section */
+        .about-us {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 3rem;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+        }
+
+        .about-us h2 {
             font-size: 2.5rem;
+            color: #006464;
             margin-bottom: 1.5rem;
         }
 
-        p {
+        .about-us p {
             font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 1rem;
-            max-width: 800px;
+            line-height: 1.7;
+            color: #555;
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            width: 100%;
+        /* Filter Section */
+        .filter-section {
             max-width: 1200px;
-            margin: 2rem auto;
-        }
-
-        .service-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 100, 100, 0.1);
-            transition: transform 0.3s ease;
-            height: 100%;
+            margin: 1rem auto;
+            padding: 1rem;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s ease;
         }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.8rem;
+        .filter-section label {
+            font-weight: 500;
             color: #006464;
         }
 
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.8rem;
-            color: #006464;
-        }
-
-        .cta-button {
-            background-color: #00C0F3;
-            color: white;
+        .filter-section button {
+            padding: 0.6rem 1.2rem;
             border: none;
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            border-radius: 5px;
+            border-radius: 25px;
+            background-color: #e0e0e0;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 1.5rem;
-            text-decoration: none;
-            display: inline-block;
+            font-weight: 500;
         }
 
-        .cta-button:hover {
-            background-color: #e2cf1f;
-            color: #006464;
+        .filter-section button.active,
+        .filter-section button:hover {
+            background-color: #006464;
+            color: white;
             transform: scale(1.05);
         }
 
+        .filter-section .search {
+            margin-left: auto;
+            padding: 0.6rem 1rem;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .filter-section .search:focus {
+            outline: none;
+            border-color: #006464;
+            box-shadow: 0 0 5px rgba(0, 100, 100, 0.3);
+        }
+
+        /* Translate Button */
+        .translate-btn {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 25px;
+            background-color: #00C0F3;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .translate-btn:hover {
+            background-color: #008fb3;
+            transform: scale(1.05);
+        }
+
+        /* Stories Sections */
+        .featured-stories,
+        .more-stories {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .featured-stories h2,
+        .more-stories h2 {
+            font-size: 2.5rem;
+            color: #006464;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .featured-stories h2::after,
+        .more-stories h2::after {
+            content: '';
+            width: 50px;
+            height: 4px;
+            background-color: #00C0F3;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .story {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .story:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .story .content {
+            padding: 2rem;
+        }
+
+        .story h3 {
+            font-size: 1.6rem;
+            color: #006464;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .story:hover h3 {
+            color: #00C0F3;
+        }
+
+        .story .meta {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 0.8rem;
+        }
+
+        .story p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .story .author {
+            font-size: 0.9rem;
+            color: #006464;
+            font-weight: 500;
+        }
+
+        .story.featured {
+            background: linear-gradient(135deg, #006464, #00C0F3);
+            color: white;
+        }
+
+        .story.featured h3,
+        .story.featured .author {
+            color: white;
+        }
+
+        .story.featured .meta {
+            color: #e0e0e0;
+        }
+
+        .story.featured:hover h3 {
+            color: #fff;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #00C0F3;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #008fb3;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #fff;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            font-size: 0.9rem;
+            color: #666;
+        }
+
         @media (max-width: 768px) {
-            body {
-                overflow-y: auto;
+            .hero {
+                height: 300px;
             }
 
-            .navbar {
-                background: transparent;
-                box-shadow: none;
-            }
-
-            .logo img {
-                filter: brightness(0) invert(1);
-            }
-
-            .hamburger span {
-                background: white;
-            }
-
-            .main-container {
-                position: relative;
-                width: 100%;
-                height: auto;
-                display: block;
-                transform: none !important;
-            }
-
-            .scroll-wrapper {
-                height: auto;
-            }
-
-            section {
-                width: 100%;
-                height: auto;
-                min-height: 100vh;
-                position: relative;
-                padding: 80px 1rem 2rem;
-            }
-
-            .floating-content {
-                position: relative;
-                top: 0;
-                left: 0;
-                transform: none;
-                opacity: 0;
-                visibility: hidden;
-                padding: 1rem;
-                background-color: #f5f5f5;
-                box-shadow: none;
-                border-radius: 0;
-                margin: 2rem 0;
-            }
-
-            .floating-content.mobile-visible {
-                opacity: 1;
-                visibility: visible;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                right: -100%;
-                width: 70%;
-                height: calc(100vh - 70px);
-                background: rgba(255, 255, 255, 0.98);
-                flex-direction: column;
-                justify-content: flex-start;
-                padding-top: 2rem;
-                transition: right 0.3s ease;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .hamburger.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 6px);
-            }
-
-            .hamburger.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -6px);
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-                padding: 1rem;
-                gap: 1rem;
-            }
-
-            .service-card {
-                margin: 0;
-            }
-
-            h1 {
+            .hero h1 {
                 font-size: 2rem;
             }
 
-            h2 {
-                font-size: 1.8rem;
+            .hero p {
+                font-size: 1rem;
             }
 
-            .section-content {
+            .filter-section {
+                flex-wrap: wrap;
+                gap: 0.5rem;
                 padding: 0.5rem;
+            }
+
+            .filter-section button,
+            .translate-btn {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .stories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-us {
+                padding: 1.5rem;
+            }
+
+            .story .content {
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">
-            <img src="template/logo.png" alt="Yeeba Impact Logo">
-        </div>
-        <button class="hamburger" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <ul class="nav-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#who-we-are">Who We Are</a></li>
-            <li><a href="#what-we-do">What We Do</a></li>
-            <li><a href="#work-done">Case Studies</a></li>
-            <li><a href="#get-involved">Get Involved</a></li>
-        </ul>
-    </nav>
-
-    <div class="scroll-wrapper">
-        <div class="main-container">
-            <section id="hero">
-                <div class="section-content">
-                    <h1>From Data to Decisions:<br>Craft an Impactful Future</h1>
-                    <div id="calendar-booking-hero"></div>
-                </div>
-            </section>
-
-            <section id="who-we-are">
-                <div class="section-content">
-                    <h2><i class="fas fa-users service-icon"></i> Who We Are</h2>
-                    <p>At Yeeba Impact, we believe that impactful decisions begin with understanding. We empower organizations to turn raw data into transformative action by putting human experiences at the heart of every data endeavor.</p>
-                    <p>Picture this: an organization flooded with information but unsure how to channel it into change. That's where we step in. With a blend of analytical rigor and strategic foresight, we dive deep into your organizational data to uncover the stories it tells. We bridge the gap between information and action, ensuring that every decision you make amplifies your social impact.</p>
-                </div>
-            </section>
-
-            <section id="what-we-do">
-                <div class="section-content">
-                    <h2><i class="fas fa-chart-line service-icon"></i> What We Do</h2>
-                    <div class="services-grid">
-                        <div class="service-card">
-                            <i class="fas fa-search service-icon"></i>
-                            <h3>Impact Diagnosis</h3>
-                            <p>Imagine trying to solve a puzzle without seeing the full picture. That's what addressing community needs without a proper diagnosis feels like. At Yeeba Impact, we start with a comprehensive needs assessment, delving into the heart of the communities and users you serve. By employing systems thinking, we don't just look at individual problems—we explore how they connect, interact, and influence one another.</p>
-                        </div>
-                        <div class="service-card">
-                            <i class="fas fa-lightbulb service-icon"></i>
-                            <h3>Impact Prognosis</h3>
-                            <p>Once the diagnosis is clear, it's time to chart a path forward. Crafting interventions isn't about imposing solutions; it's about designing programs that resonate deeply with the communities you serve. Employing user-centered approaches, we co-create solutions that are not only practical but also culturally and socially relevant.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="work-done">
-                <div class="section-content">
-                    <h2><i class="fas fa-folder-open service-icon"></i> Work We Have Done</h2>
-                    <p>Discover our case studies that showcase our impact-driven approach.</p>
-                </div>
-            </section>
-
-            <section id="get-involved">
-                <div class="section-content">
-                    <h2><i class="fas fa-handshake service-icon"></i> Get Involved</h2>
-                    <p>We offer consulting, capacity building, and training.</p>
-                    <div id="calendar-booking-involved"></div>
-                </div>
-            </section>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1 data-en="Welcome to Yeeba Impact" data-sw="Karibu Yeeba Impact">Welcome to Yeeba Impact</h1>
+            <p data-en="Discover how we transform data into meaningful impact across the globe." data-sw="Gundua jinsi tunavyobadilisha data kuwa athari za maana kote ulimwenguni.">Discover how we transform data into meaningful impact across the globe.</p>
         </div>
     </div>
 
-    <div class="floating-content">
-        <h2><i class="fas fa-chart-line service-icon"></i> What We Do</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-chart-bar service-icon"></i>
-                <h3>Impact Monitoring</h3>
-                <p>Good intentions are only as strong as their execution. As your initiatives roll out, we ensure they remain on track through rigorous monitoring. Imagine having a dashboard that shows not just what's happening but why it's happening. That's the level of clarity we bring. This allows you to track progress in real-time and adjust your approach when necessary.</p>
+    <!-- About Us Section -->
+    <div class="about-us">
+        <h2 data-en="About Us" data-sw="Kuhusu Sisi">About Us</h2>
+        <p data-en="Yeeba Impact is a dedicated team committed to using data-driven insights to create positive change. Founded in 2020, we have worked with over 50 organizations worldwide to bridge the gap between information and action, ensuring every decision amplifies social good." data-sw="Yeeba Impact ni timu iliyojitolea inayotumia maarifa yanayotokana na data kuunda mabadiliko ya chanya. Ilianzishwa mwaka 2020, tumefanya kazi na zaidi ya mashirika 50 duniani kote ili kujaza pengo kati ya habari na hatua, kuhakikisha kila uamuzi unakuza wema wa jamii.">Yeeba Impact is a dedicated team committed to using data-driven insights to create positive change. Founded in 2020, we have worked with over 50 organizations worldwide to bridge the gap between information and action, ensuring every decision amplifies social good.</p>
+        <p data-en="Our approach combines cutting-edge analytics with community engagement to deliver sustainable solutions tailored to local needs." data-sw="Mbinu yetu inachanganya uchanganuzi wa hali ya juu na ushirikiano wa jamii ili kutoa suluhisho za kudumu zilizoboreshwa kwa mahitaji ya ndani.">Our approach combines cutting-edge analytics with community engagement to deliver sustainable solutions tailored to local needs.</p>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="filter-section">
+        <label data-en="Filter by:" data-sw="Chuja kwa:">Filter by:</label>
+        <button class="active" data-filter="all" data-en="All" data-sw="Yote">All</button>
+        <button data-filter="prognosis" data-en="Prognosis" data-sw="Utabiri">Prognosis</button>
+        <button data-filter="diagnosis" data-en="Diagnosis" data-sw="Utambuzi">Diagnosis</button>
+        <button data-filter="monitoring" data-en="Monitoring" data-sw="Ufuatiliaji">Monitoring</button>
+        <button data-filter="evaluation" data-en="Evaluation" data-sw="Tathmini">Evaluation</button>
+        <button class="translate-btn" data-en="Translate to Kiswahili" data-sw="Tafsiri kwa Kiingereza" onclick="toggleTranslate()">Translate to Kiswahili</button>
+        <input type="text" class="search" data-en-placeholder="Search" data-sw-placeholder="Tafuta" placeholder="Search">
+    </div>
+
+    <!-- Featured Stories Section -->
+    <div class="featured-stories">
+        <h2 data-en="Featured Stories" data-sw="Hadithi za Kuangaziwa">Featured Stories</h2>
+        <div class="stories-grid">
+            <div class="story featured" data-category="all" data-en-title="Inspiring Change in Tanzania" data-sw-title="Kubadilisha Maisha Tanzania" data-en-desc="We partnered with local leaders in Tanzania to improve access to clean energy, impacting over 1,000 households with solar solutions." data-sw-desc="Tulishirikiana na viongozi wa ndani nchini Tanzania ili kuboresha upatikanaji wa nishati safi, na kuathiri zaidi ya kaya 1,000 kwa suluhisho za jua." data-en-meta="May 30, 2025 • Yeeba Impact" data-sw-meta="Mei 30, 2025 • Yeeba Impact" data-en-author="Yeeba Impact" data-sw-author="Yeeba Impact">
+                <div class="content">
+                    <h3>Inspiring Change in Tanzania</h3>
+                    <div class="meta">May 30, 2025 • Yeeba Impact</div>
+                    <p>We partnered with local leaders in Tanzania to improve access to clean energy, impacting over 1,000 households with solar solutions.</p>
+                    <div class="author">Yeeba Impact</div>
+                </div>
             </div>
-            <div class="service-card">
-                <i class="fas fa-rocket service-icon"></i>
-               <!-- Previous code remains exactly the same until the floating-content div's second service-card -->
 
-               <h3>Impact Evaluation</h3>
-               <p>When the work is done, how do you measure its success? At Yeeba Impact, we go beyond surface-level metrics to uncover the true depth of your impact. Using experimental and quasi-experimental methods, we analyze the tangible and intangible outcomes of your projects. We don't just tell you what worked—we help you understand why it worked.</p>
-           </div>
-       </div>
-   </div>
+            <div class="story featured" data-category="all" data-en-title="Education for All in Uganda" data-sw-title="Elimu kwa Wote Uganda" data-en-desc="Our initiative in Uganda brought educational resources to remote areas, benefiting over 2,000 children in 2024 alone." data-sw-desc="Mpango wetu nchini Uganda ulileta rasilimali za elimu katika maeneo ya mbali, na kufaidi zaidi ya watoto 2,000 mwaka wa 2024 pekee." data-en-meta="May 30, 2025 • Yeeba Impact" data-sw-meta="Mei 30, 2025 • Yeeba Impact" data-en-author="Yeeba Impact" data-sw-author="Yeeba Impact">
+                <div class="content">
+                    <h3>Education for All in Uganda</h3>
+                    <div class="meta">May 30, 2025 • Yeeba Impact</div>
+                    <p>Our initiative in Uganda brought educational resources to remote areas, benefiting over 2,000 children in 2024 alone.</p>
+                    <div class="author">Yeeba Impact</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-   <script>
-       // Initialize variables
-       let isMobile = window.innerWidth <= 768;
-       const hamburger = document.querySelector('.hamburger');
-       const navLinks = document.querySelector('.nav-links');
-       const navLinksItems = document.querySelectorAll('.nav-links a');
-       const floatingContent = document.querySelector('.floating-content');
-       let gsapAnimation;
-       let scrollTriggerInstances = [];
+    <!-- More Stories Section -->
+    <div class="more-stories">
+        <h2 data-en="More Stories" data-sw="Hadithi za Ziada">More Stories</h2>
+        <div class="stories-grid">
+            <div class="story" data-category="prognosis" data-en-title="Impact Prognosis" data-sw-title="Utabiri wa Athari" data-en-desc="Once the diagnosis is clear, it's time to chart a path forward. Crafting interventions isn't about imposing solutions; it's about designing programs that resonate deeply with the communities you serve..." data-sw-desc="Mara tu utambuzi unapokuwa wazi, ni wakati wa kuweka njia ya mbele. Kuunda hatua za kuingilia si kuhusu kulazimisha suluhisho; ni kuhusu kubuni programu zinazohusiana kwa undani na jamii unazohudumia..." data-en-meta="April 23, 2024" data-sw-meta="Aprili 23, 2024" data-en-author="Yeeba Impact" data-sw-author="Yeeba Impact">
+                <div class="content">
+                    <h3>Impact Prognosis</h3>
+                    <div class="meta">April 23, 2024</div>
+                    <p>Once the diagnosis is clear, it's time to chart a path forward. Crafting interventions isn't about imposing solutions; it's about designing programs that resonate deeply with the communities you serve...</p>
+                    <div class="author">Yeeba Impact</div>
+                </div>
+            </div>
 
-       // Mobile menu functionality
-       hamburger.addEventListener('click', () => {
-           hamburger.classList.toggle('active');
-           navLinks.classList.toggle('active');
-       });
+            <div class="story" data-category="diagnosis" data-en-title="Impact Diagnosis" data-sw-title="Utambuzi wa Athari" data-en-desc="Imagine trying to solve a puzzle without seeing the full picture. That's what addressing community needs without a proper diagnosis feels like. At Yeeba Impact, we start with a comprehensive needs assessment..." data-sw-desc="Fikiria kujaribu kutatua fumbo bila kuona picha kamili. Hivyo ndivyo inavyohisi kushughulikia mahitaji ya jamii bila utambuzi sahihi. Katika Yeeba Impact, tunaanza na tathmini ya kina ya mahitaji..." data-en-meta="April 23, 2024" data-sw-meta="Aprili 23, 2024" data-en-author="Yeeba Impact" data-sw-author="Yeeba Impact">
+                <div class="content">
+                    <h3>Impact Diagnosis</h3>
+                    <div class="meta">April 23, 2024</div>
+                    <p>Imagine trying to solve a puzzle without seeing the full picture. That's what addressing community needs without a proper diagnosis feels like. At Yeeba Impact, we start with a comprehensive needs assessment...</p>
+                    <div class="author">Yeeba Impact</div>
+                </div>
+            </div>
 
-       navLinksItems.forEach(link => {
-           link.addEventListener('click', () => {
-               hamburger.classList.remove('active');
-               navLinks.classList.remove('active');
-           });
-       });
+            <div class="story" data-category="monitoring" data-en-title="Impact Monitoring" data-sw-title="Ufuatiliaji wa Athari" data-en-desc="Good intentions are only as strong as their execution. As your initiatives roll out, we ensure they remain on track through rigorous monitoring..." data-sw-desc="Nia njema ni za nguvu kama utekelezaji wao. Wakati mipango yako inapoanza, tunahakikisha inabaki kwenye mstari kupitia ufuatiliaji wa makini..." data-en-meta="April 23, 2024" data-sw-meta="Aprili 23, 2024" data-en-author="Yeeba Impact" data-sw-author="Yeeba Impact">
+                <div class="content">
+                    <h3>Impact Monitoring</h3>
+                    <div class="meta">April 23, 2024</div>
+                    <p>Good intentions are only as strong as their execution. As your initiatives roll out, we ensure they remain on track through rigorous monitoring...</p>
+                    <div class="author">Yeeba Impact</div>
+                </div>
+            </div>
 
-       // Scroll animation initialization
-       function initScrollAnimation() {
-           // Clear existing animations
-           if (scrollTriggerInstances.length) {
-               scrollTriggerInstances.forEach(instance => instance.kill());
-               scrollTriggerInstances = [];
-           }
+            <div class="story" data-category="evaluation" data-en-title="Impact Evaluation" data-sw-title="Tathmini ya Athari" data-en-desc="When the work is done, how do you measure its success? At Yeeba Impact, we go beyond surface-level metrics to uncover the true depth of your impact..." data-sw-desc="Kazi ikimalizika, unapimaje mafanikio yake? Katika Yeeba Impact, tunaenda zaidi ya vipimo vya juu juu ili kufichua kina cha athari yako..." data-en-meta="April 23, 2024" data-sw-meta="Aprili 23, 2024" data-en-author="Yeeba Impact" data-sw-author="Yeeba Impact">
+                <div class="content">
+                    <h3>Impact Evaluation</h3>
+                    <div class="meta">April 23, 2024</div>
+                    <p>When the work is done, how do you measure its success? At Yeeba Impact, we go beyond surface-level metrics to uncover the true depth of your impact...</p>
+                    <div class="author">Yeeba Impact</div>
+                </div>
+            </div>
 
-           if (!isMobile && window.innerWidth > 768) {
-               gsap.registerPlugin(ScrollTrigger);
-               
-               const sections = document.querySelectorAll('section');
-               const totalScrollDistance = (sections.length - 1) * window.innerWidth;
+            <div class="story" data-category="prognosis" data-en-title="Clean Water for All in Kenya" data-sw-title="Maji Safi kwa Wote Kenya" data-en-desc="In Kenya, we worked with local communities to install water purification systems, providing clean water to over 5,000 people in 2024." data-sw-desc="Nchini Kenya, tulifanya kazi na jamii za mitaa kuweka mifumo ya kusafisha maji, ikitoa maji safi kwa watu zaidi ya 5,000 mwaka wa 2024." data-en-meta="May 30, 2025" data-sw-meta="Mei 30, 2025" data-en-author="Yeeba Impact" data-sw-author="Yeeba Impact">
+                <div class="content">
+                    <h3>Clean Water for All in Kenya</h3>
+                    <div class="meta">May 30, 2025</div>
+                    <p>In Kenya, we worked with local communities to install water purification systems, providing clean water to over 5,000 people in 2024.</p>
+                    <div class="author">Yeeba Impact</div>
+                </div>
+            </div>
 
-               // Main container animation
-               const mainAnim = gsap.to(".main-container", {
-                   x: () => -totalScrollDistance,
-                   ease: "none",
-                   scrollTrigger: {
-                       trigger: ".scroll-wrapper",
-                       start: "top top",
-                       end: () => `+=${totalScrollDistance}`,
-                       scrub: 1,
-                       pin: true,
-                       anticipatePin: 1,
-                       invalidateOnRefresh: true
-                   }
-               });
-               scrollTriggerInstances.push(mainAnim.scrollTrigger);
+            <div class="story" data-category="monitoring" data-en-title="Monitoring Agricultural Growth in Rwanda" data-sw-title="Ufuatiliaji wa Ukuaji wa Kilimo Rwanda" data-en-desc="We monitored crop yields in rural Rwanda, providing farmers with real-time data to optimize planting seasons and increase productivity by 20%." data-sw-desc="Tulifuata ukuaji wa mazao katika vijijini Rwanda, tukiwapa wakulima data ya wakati halisi ili kuboresha misimu ya upandaji na kuongeza tija kwa 20%." data-en-meta="May 30, 2025" data-sw-meta="Mei 30, 2025" data-en-author="Yeeba Impact" data-sw-author="Yeeba Impact">
+                <div class="content">
+                    <h3>Monitoring Agricultural Growth in Rwanda</h3>
+                    <div class="meta">May 30, 2025</div>
+                    <p>We monitored crop yields in rural Rwanda, providing farmers with real-time data to optimize planting seasons and increase productivity by 20%.</p>
+                    <div class="author">Yeeba Impact</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-               // Floating content animation
-               const whatWeDoSection = document.querySelector('#what-we-do');
-               const workDoneSection = document.querySelector('#work-done');
+    <!-- Back to Top Button -->
+    <button class="back-to-top" data-en-title="Back to Top" data-sw-title="Rudi Juu" title="Back to Top" onclick="scrollToTop()">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
-               const floatingAnim = gsap.timeline({
-                   scrollTrigger: {
-                       trigger: whatWeDoSection,
-                       start: "work-done",
-                       end: () => `+=${window.innerWidth * 1.5}`,
-                       scrub: true,
-                       onEnter: () => {
-                           floatingContent.style.visibility = 'visible';
-                           gsap.to(floatingContent, { opacity: 1, duration: 0.5 });
-                       },
-                       onLeave: () => {
-                           gsap.to(floatingContent, {
-                               opacity: 0,
-                               duration: 0.5,
-                               onComplete: () => {
-                                   floatingContent.style.visibility = 'hidden';
-                               }
-                           });
-                       },
-                       onEnterBack: () => {
-                           floatingContent.style.visibility = 'visible';
-                           gsap.to(floatingContent, { opacity: 1, duration: 0.5 });
-                       },
-                       onLeaveBack: () => {
-                           gsap.to(floatingContent, {
-                               opacity: 0,
-                               duration: 0.5,
-                               onComplete: () => {
-                                   floatingContent.style.visibility = 'hidden';
-                               }
-                           });
-                       }
-                   }
-               });
-               scrollTriggerInstances.push(floatingAnim.scrollTrigger);
+    <!-- Footer -->
+    <div class="footer" data-en="© 2024 Yeeba Impact" data-sw="© 2024 Yeeba Impact">© 2024 Yeeba Impact</div>
 
-           } else {
-               // Mobile scroll behavior
-               const observer = new IntersectionObserver((entries) => {
-                   entries.forEach(entry => {
-                       if (entry.target.id === 'what-we-do') {
-                           if (entry.isIntersecting) {
-                               floatingContent.style.visibility = 'visible';
-                               requestAnimationFrame(() => {
-                                   floatingContent.classList.add('mobile-visible');
-                               });
-                           } else {
-                               floatingContent.classList.remove('mobile-visible');
-                               setTimeout(() => {
-                                   if (!floatingContent.classList.contains('mobile-visible')) {
-                                       floatingContent.style.visibility = 'hidden';
-                                   }
-                               }, 300);
-                           }
-                       }
-                   });
-               }, {
-                   threshold: 0.5,
-                   rootMargin: '-10% 0px'
-               });
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Filter functionality
+            const filterButtons = document.querySelectorAll('.filter-section button[data-filter]');
+            const stories = document.querySelectorAll('.story');
+            const searchInput = document.querySelector('.search');
+            let isKiswahili = false;
+            let debounceTimeout;
 
-               observer.observe(document.querySelector('#what-we-do'));
-           }
-       }
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const filter = button.getAttribute('data-filter');
+                    filterStories(filter);
+                });
+            });
 
-       // Smooth scrolling function
-       function scrollToSection(sectionId) {
-           const section = document.getElementById(sectionId);
-           if (!section) return;
+            // Search functionality with debouncing
+            searchInput.addEventListener('input', () => {
+                clearTimeout(debounceTimeout);
+                debounceTimeout = setTimeout(() => {
+                    const activeFilter = document.querySelector('.filter-section button.active')?.getAttribute('data-filter') || 'all';
+                    filterStories(activeFilter);
+                }, 300);
+            });
 
-           if (isMobile) {
-               section.scrollIntoView({ 
-                   behavior: 'smooth',
-                   block: 'start'
-               });
-           } else {
-               const sections = document.querySelectorAll('section');
-               const sectionIndex = Array.from(sections).findIndex(s => s.id === sectionId);
-               const scrollTo = sectionIndex * window.innerWidth;
-               
-               window.scrollTo({
-                   top: scrollTo,
-                   behavior: 'smooth'
-               });
-           }
-       }
+            function filterStories(filter = 'all') {
+                try {
+                    const searchTerm = searchInput.value.trim().toLowerCase();
+                    stories.forEach(story => {
+                        const category = story.getAttribute('data-category');
+                        const title = (isKiswahili ? story.getAttribute('data-sw-title') : story.getAttribute('data-en-title'))?.toLowerCase() || '';
+                        const desc = (isKiswahili ? story.getAttribute('data-sw-desc') : story.getAttribute('data-en-desc'))?.toLowerCase() || '';
 
-       // Initialize calendar booking buttons
-       function initCalendarButtons() {
-           ['calendar-booking-hero', 'calendar-booking-involved'].forEach(id => {
-               const element = document.getElementById(id);
-               if (element) {
-                   calendar.schedulingButton.load({
-                       url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2TZ3lwwKMdZl0ikzfZtqRrk47MN7gYwjCbXin1iM2JVSENyRfv63nrFCm1vL7WGQqQ_m63ta1r?gv=true',
-                       color: '#00C0F3',
-                       label: 'Book a Free One-Hour Consultation',
-                       target: element,
-                   });
-               }
-           });
-       }
+                        const matchesFilter = filter === 'all' || category === filter;
+                        const matchesSearch = searchTerm === '' || title.includes(searchTerm) || desc.includes(searchTerm);
 
-       // Handle window load
-       window.addEventListener('load', () => {
-           initScrollAnimation();
-           initCalendarButtons();
-           isMobile = window.innerWidth <= 768;
-       });
+                        if (matchesFilter && matchesSearch) {
+                            story.style.display = 'block';
+                        } else {
+                            story.style.display = 'none';
+                        }
+                    });
+                } catch (error) {
+                    console.error('Error in filterStories:', error);
+                }
+            }
 
-       // Handle resize with debouncing
-       let resizeTimeout;
-       window.addEventListener('resize', () => {
-           clearTimeout(resizeTimeout);
-           resizeTimeout = setTimeout(() => {
-               const newIsMobile = window.innerWidth <= 768;
-               if (newIsMobile !== isMobile) {
-                   isMobile = newIsMobile;
-                   initScrollAnimation();
-               }
-           }, 250);
-       });
+            // Translate functionality
+            window.toggleTranslate = function() {
+                try {
+                    isKiswahili = !isKiswahili;
 
-       // Handle navigation
-       document.addEventListener('DOMContentLoaded', () => {
-           const links = document.querySelectorAll('a[href^="#"]');
-           links.forEach(link => {
-               link.addEventListener('click', (e) => {
-                   e.preventDefault();
-                   const targetId = link.getAttribute('href').substring(1);
-                   scrollToSection(targetId);
-               });
-           });
-       });
-   </script>
+                    // Update all elements with data-en and data-sw attributes
+                    document.querySelectorAll('[data-en]').forEach(element => {
+                        const key = element.tagName === 'INPUT' ? 'placeholder' : 'textContent';
+                        element[key] = isKiswahili ? element.getAttribute('data-sw') : element.getAttribute('data-en');
+                    });
+
+                    // Update attributes like title and placeholder
+                    document.querySelectorAll('[data-en-title]').forEach(element => {
+                        element.setAttribute('title', isKiswahili ? element.getAttribute('data-sw-title') : element.getAttribute('data-en-title'));
+                    });
+
+                    document.querySelectorAll('[data-en-placeholder]').forEach(element => {
+                        element.setAttribute('placeholder', isKiswahili ? element.getAttribute('data-sw-placeholder') : element.getAttribute('data-en-placeholder'));
+                    });
+
+                    // Update stories specifically
+                    stories.forEach(story => {
+                        const title = story.querySelector('h3');
+                        const desc = story.querySelector('p');
+                        const meta = story.querySelector('.meta');
+                        const author = story.querySelector('.author');
+
+                        if (!title || !desc || !meta || !author) {
+                            console.error('Missing elements in story:', story);
+                            return;
+                        }
+
+                        if (isKiswahili) {
+                            title.textContent = story.getAttribute('data-sw-title') || title.textContent;
+                            desc.textContent = story.getAttribute('data-sw-desc') || desc.textContent;
+                            meta.textContent = story.getAttribute('data-sw-meta') || meta.textContent;
+                            author.textContent = story.getAttribute('data-sw-author') || author.textContent;
+                        } else {
+                            title.textContent = story.getAttribute('data-en-title') || title.textContent;
+                            desc.textContent = story.getAttribute('data-en-desc') || desc.textContent;
+                            meta.textContent = story.getAttribute('data-en-meta') || meta.textContent;
+                            author.textContent = story.getAttribute('data-en-author') || author.textContent;
+                        }
+                    });
+
+                    // Reapply filters after translation
+                    const activeFilter = document.querySelector('.filter-section button.active')?.getAttribute('data-filter') || 'all';
+                    filterStories(activeFilter);
+                } catch (error) {
+                    console.error('Error in toggleTranslate:', error);
+                }
+            };
+
+            // Back to Top functionality
+            const backToTopButton = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            });
+
+            window.scrollToTop = function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            };
+
+            // Initial filter application
+            filterStories();
+        });
+    </script>
 </body>
 </html>

@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +44,7 @@
         .main-container {
             display: flex;
             flex-wrap: nowrap;
-            width: 600vw;
+            width: 500vw;
             height: 100vh;
             position: fixed;
             top: 0;
@@ -122,11 +115,13 @@
             background: rgba(255, 255, 255, 0.95);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             height: 70px;
+            transition: all 0.3s ease;
         }
 
         .logo img {
             height: 50px;
             width: auto;
+            transition: filter 0.3s ease;
         }
 
         .nav-links {
@@ -152,6 +147,7 @@
             background: none;
             border: none;
             padding: 0.5rem;
+            z-index: 1001;
         }
 
         .hamburger span {
@@ -163,9 +159,26 @@
             transition: all 0.3s ease;
         }
 
+        .floating-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            opacity: 0;
+            visibility: hidden;
+            width: 100%;
+            max-width: 1200px;
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0);
+
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
         #who-we-are { background-color: white; }
         #what-we-do { background-color: #f5f5f5; }
-        #what-we-do-2 { background-color: #f5f5f5; }
         #work-done { background-color: white; }
         #get-involved { background-color: #f5f5f5; }
 
@@ -248,6 +261,19 @@
                 overflow-y: auto;
             }
 
+            .navbar {
+                background: transparent;
+                box-shadow: none;
+            }
+
+            .logo img {
+                filter: brightness(0) invert(1);
+            }
+
+            .hamburger span {
+                background: white;
+            }
+
             .main-container {
                 position: relative;
                 width: 100%;
@@ -268,9 +294,27 @@
                 padding: 80px 1rem 2rem;
             }
 
+            .floating-content {
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: none;
+                opacity: 0;
+                visibility: hidden;
+                padding: 1rem;
+                background-color: #f5f5f5;
+                box-shadow: none;
+                border-radius: 0;
+                margin: 2rem 0;
+            }
+
+            .floating-content.mobile-visible {
+                opacity: 1;
+                visibility: visible;
+            }
+
             .hamburger {
                 display: block;
-                z-index: 1001;
             }
 
             .nav-links {
@@ -380,24 +424,6 @@
                 </div>
             </section>
 
-            <section id="what-we-do-2">
-                <div class="section-content">
-                    <h2><i class="fas fa-chart-line service-icon"></i> What We Do</h2>
-                    <div class="services-grid">
-                        <div class="service-card">
-                            <i class="fas fa-chart-bar service-icon"></i>
-                            <h3>Impact Monitoring</h3>
-                            <p>Good intentions are only as strong as their execution. As your initiatives roll out, we ensure they remain on track through rigorous monitoring. Imagine having a dashboard that shows not just what's happening but why it's happening. That's the level of clarity we bring. This allows you to track progress in real-time and adjust your approach when necessary.</p>
-                        </div>
-                        <div class="service-card">
-                            <i class="fas fa-rocket service-icon"></i>
-                            <h3>Impact Evaluation</h3>
-                            <p>When the work is done, how do you measure its success? At Yeeba Impact, we go beyond surface-level metrics to uncover the true depth of your impact. Using experimental and quasi-experimental methods, we analyze the tangible and intangible outcomes of your projects. We don't just tell you what worked—we help you understand why it worked.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <section id="work-done">
                 <div class="section-content">
                     <h2><i class="fas fa-folder-open service-icon"></i> Work We Have Done</h2>
@@ -415,144 +441,215 @@
         </div>
     </div>
 
-    <script>
-        // Initialize variables
-        let isMobile = window.innerWidth <= 768;
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        const navLinksItems = document.querySelectorAll('.nav-links a');
-        let gsapAnimation;
+    <div class="floating-content">
+        <h2><i class="fas fa-chart-line service-icon"></i> What We Do</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-chart-bar service-icon"></i>
+                <h3>Impact Monitoring</h3>
+                <p>Good intentions are only as strong as their execution. As your initiatives roll out, we ensure they remain on track through rigorous monitoring. Imagine having a dashboard that shows not just what's happening but why it's happening. That's the level of clarity we bring. This allows you to track progress in real-time and adjust your approach when necessary.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-rocket service-icon"></i>
+               <!-- Previous code remains exactly the same until the floating-content div's second service-card -->
 
-        // Mobile menu functionality
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
+               <h3>Impact Evaluation</h3>
+               <p>When the work is done, how do you measure its success? At Yeeba Impact, we go beyond surface-level metrics to uncover the true depth of your impact. Using experimental and quasi-experimental methods, we analyze the tangible and intangible outcomes of your projects. We don't just tell you what worked—we help you understand why it worked.</p>
+           </div>
+       </div>
+   </div>
+
+   <script>
+      // Initialize variables
+let isMobile = window.innerWidth <= 768;
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+const navLinksItems = document.querySelectorAll('.nav-links a');
+const floatingContent = document.querySelector('.floating-content');
+let scrollTriggerInstances = []; // Store ScrollTrigger instances for cleanup
+
+// Mobile menu functionality
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+navLinksItems.forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+    });
+});
+
+// Scroll animation initialization
+function initScrollAnimation() {
+    // Kill existing ScrollTriggers to prevent conflicts on resize
+    if (scrollTriggerInstances.length) {
+        scrollTriggerInstances.forEach(instance => instance.kill());
+        scrollTriggerInstances = []; // Clear the array
+    }
+
+    if (!isMobile && window.innerWidth > 768) {
+        gsap.registerPlugin(ScrollTrigger);
+
+        const sections = document.querySelectorAll('section');
+        const totalScrollDistance = (sections.length - 1) * window.innerWidth;
+
+        // Main horizontal scrolling animation
+        const mainAnim = gsap.to(".main-container", {
+            x: () => -totalScrollDistance,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".scroll-wrapper",
+                start: "top top",
+                end: () => `+=${totalScrollDistance}`,
+                scrub: 1,
+                pin: true,
+                anticipatePin: 1,
+                invalidateOnRefresh: true, // Important for resize handling
+            }
         });
+        scrollTriggerInstances.push(mainAnim.scrollTrigger);
 
-        navLinksItems.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetId = link.getAttribute('href').substring(1);
-                scrollToSection(targetId);
-                
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
+         
+        const whoWeAreSection = document.querySelector('#who-we-are');
+        const whatWeDoSection = document.querySelector('#what-we-do');
 
-        // Initialize GSAP animation for desktop
-        // Initialize GSAP animation for desktop
-        function initScrollAnimation() {
-            if (!isMobile && window.innerWidth > 768) {
-                gsap.registerPlugin(ScrollTrigger);
-                
-                // Clear any existing animations
-                if (gsapAnimation) {
-                    gsapAnimation.kill();
-                }
-                
-                const sections = document.querySelectorAll('section');
-                const totalScrollDistance = (sections.length - 1) * window.innerWidth;
-
-                gsapAnimation = gsap.to(".main-container", {
-                    x: () => -totalScrollDistance,
-                    ease: "none",
-                    scrollTrigger: {
-                        trigger: ".scroll-wrapper",
-                        start: "top top",
-                        end: () => `+=${totalScrollDistance}`,
-                        scrub: 1,
-                        pin: true,
-                        anticipatePin: 1,
-                        invalidateOnRefresh: true,
-                        onUpdate: (self) => {
-                            // Ensure smooth scrolling at the end
-                            if (self.progress >= 0.99) {
-                                window.scrollTo(0, self.end);
-                            }
+        // Floating content animation
+        const floatingAnim = gsap.timeline({
+            scrollTrigger: {
+                trigger: whoWeAreSection,
+                start: "after after", // Appear when bottom of slide 2 hits bottom of viewport
+                end: () => whoWeAreSection.offsetTop + whoWeAreSection.offsetHeight, // Disappear when the bottom of slide 3 hits the top of the viewport
+                scrub: true,
+                onEnter: () => {
+                    floatingContent.style.visibility = 'visible';
+                    gsap.to(floatingContent, { opacity: 1, duration: 0.5 });
+                },
+                onLeave: () => {
+                    gsap.to(floatingContent, {
+                        opacity: 0,
+                        duration: 0.5,
+                        onComplete: () => {
+                            floatingContent.style.visibility = 'hidden';
                         }
-                    }
-                });
-            }
-        }
-
-        // Smooth scrolling function
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (!section) return;
-
-            if (isMobile) {
-                // Mobile scrolling
-                section.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            } else {
-                // Desktop horizontal scrolling
-                const sections = document.querySelectorAll('section');
-                const sectionIndex = Array.from(sections).findIndex(s => s.id === sectionId);
-                const totalSections = sections.length;
-                const maxScroll = (totalSections - 1) * window.innerWidth;
-                const scrollTo = (sectionIndex / (totalSections - 1)) * maxScroll;
-                
-                window.scrollTo({
-                    top: scrollTo,
-                    behavior: 'smooth'
-                });
-            }
-        }
-
-        // Initialize calendar booking buttons
-        function initCalendarButtons() {
-            ['calendar-booking-hero', 'calendar-booking-involved'].forEach(id => {
-                const element = document.getElementById(id);
-                if (element) {
-                    calendar.schedulingButton.load({
-                        url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2TZ3lwwKMdZl0ikzfZtqRrk47MN7gYwjCbXin1iM2JVSENyRfv63nrFCm1vL7WGQqQ_m63ta1r?gv=true',
-                        color: '#00C0F3',
-                        label: 'Book a Free One-Hour Consultation',
-                        target: element,
+                    });
+                },
+                onEnterBack: () => {
+                    floatingContent.style.visibility = 'visible';
+                    gsap.to(floatingContent, { opacity: 1, duration: 0.5 });
+                },
+                onLeaveBack: () => {
+                    gsap.to(floatingContent, {
+                        opacity: 0,
+                        duration: 0.5,
+                        onComplete: () => {
+                            floatingContent.style.visibility = 'hidden';
+                        }
                     });
                 }
+            }
+        });
+        scrollTriggerInstances.push(floatingAnim.scrollTrigger);
+
+    } else {
+        // Mobile scroll behavior (Optional - Remove if not needed)
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.target.id === 'who-we-are') {
+                    if (entry.isIntersecting) {
+                        floatingContent.style.visibility = 'visible';
+                        requestAnimationFrame(() => {
+                            floatingContent.classList.add('mobile-visible');
+                        });
+                    } else {
+                        floatingContent.classList.remove('mobile-visible');
+                        setTimeout(() => {
+                            if (!floatingContent.classList.contains('mobile-visible')) {
+                                floatingContent.style.visibility = 'hidden';
+                            }
+                        }, 300);
+                    }
+                }
+            });
+        }, {
+            threshold: 0.5,
+            rootMargin: '-10% 0px'
+        });
+
+        observer.observe(document.querySelector('#who-we-are'));
+    }
+}
+
+
+// Smooth scrolling function (for navigation links)
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    if (isMobile) {
+        section.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    } else {
+        const sections = document.querySelectorAll('section');
+        const sectionIndex = Array.from(sections).findIndex(s => s.id === sectionId);
+        const scrollTo = sectionIndex * window.innerWidth;
+
+        window.scrollTo({
+            top: scrollTo,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Initialize calendar booking buttons
+function initCalendarButtons() {
+    ['calendar-booking-hero', 'calendar-booking-involved'].forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            calendar.schedulingButton.load({ // Make sure 'calendar' is defined
+                url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ2TZ3lwwKMdZl0ikzfZtqRrk47MN7gYwjCbXin1iM2JVSENyRfv63nrFCm1vL7WGQqQ_m63ta1r?gv=true',
+                color: '#00C0F3',
+                label: 'Book a Free One-Hour Consultation',
+                target: element,
             });
         }
+    });
+}
 
-        // Handle window load
-        window.addEventListener('load', () => {
-            // Initialize animations
+// Handle window load
+window.addEventListener('load', () => {
+    initScrollAnimation();
+    initCalendarButtons();
+    isMobile = window.innerWidth <= 768;
+});
+
+// Handle resize with debouncing
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        const newIsMobile = window.innerWidth <= 768;
+        if (newIsMobile !== isMobile) {
+            isMobile = newIsMobile;
             initScrollAnimation();
-            
-            // Initialize calendar buttons
-            initCalendarButtons();
-            
-            // Set initial mobile state
-            isMobile = window.innerWidth <= 768;
-        });
+        }
+    }, 250);
+});
 
-        // Handle resize with debouncing
-        let resizeTimeout;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                const newIsMobile = window.innerWidth <= 768;
-                if (newIsMobile !== isMobile) {
-                    // Only reload if switching between mobile and desktop
-                    location.reload();
-                }
-            }, 250);
+// Handle navigation (smooth scrolling for anchor links)
+document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            scrollToSection(targetId);
         });
-
-        // Handle navigation links
-        document.addEventListener('DOMContentLoaded', () => {
-            const links = document.querySelectorAll('a[href^="#"]');
-            links.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const targetId = link.getAttribute('href').substring(1);
-                    scrollToSection(targetId);
-                });
-            });
-        });
-    </script>
+    });
+});
+   </script>
 </body>
 </html>
